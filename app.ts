@@ -16,7 +16,7 @@ if (!AllowedOrigin) throw new Error("CORS Exception - No Origin Provided!");
 App.use(cors({ origin: AllowedOrigin }));
 App.use(express.json());
 
-App.get("/api/repository", async (Req: Request, Res: Response) => {
+App.get("/api/repositories", async (Req: Request, Res: Response) => {
 	try {
 		const Response = await RepositoryService.GetRepositories();
 		if (Response) return Res.json(Response).status(200);
@@ -26,7 +26,7 @@ App.get("/api/repository", async (Req: Request, Res: Response) => {
 	}
 });
 
-App.post("/api/repository", AuthenticationFilter, async (Req: Request, Res: Response) => {
+App.post("/api/repositories", AuthenticationFilter, async (Req: Request, Res: Response) => {
 	try {
 		const RequestBody: IRepository = Req.body;
 		const Response = await RepositoryService.PostARepository(RequestBody);
@@ -37,7 +37,7 @@ App.post("/api/repository", AuthenticationFilter, async (Req: Request, Res: Resp
 	}
 });
 
-App.delete("/api/repository/:name", AuthenticationFilter, async (Req: Request, Res: Response) => {
+App.delete("/api/repositories/:name", AuthenticationFilter, async (Req: Request, Res: Response) => {
 	const Response = RepositoryService.DeleteARepository(Req.params.name);
 	return Res.json(Response);
 });
