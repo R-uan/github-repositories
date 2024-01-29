@@ -1,2 +1,2 @@
-Uses Basic Authentication for the POST and DELETE HTTP Requests. The admin credentials are set with environment variables.
-Stores the data on MongoDB
+Uses MongoDB as database and Mongoose as a ODM <br/>
+The credentials for the basic authorization is set on the a enviroment variable.
